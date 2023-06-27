@@ -1,7 +1,3 @@
-ssh_username: "{{ secure_ssh_username }}"
-ssh_secret: "{{ secure_ssh_secret }}"
-enable_secret: "{{ secure_enable_secret }}"
-line_password: "{{ secure_line_password }}"
 mgmt_vrf_name: MGMT
 crypto_key_size: 2048
 mgmt_intf_next_hop: 10.10.20.254
