@@ -1,0 +1,4 @@
+ip_domain_name: E10.lab
+bgp_as: 10
+ospf2_autocost_refbandwidth: 10000
+ospfv2_process_id: 1
