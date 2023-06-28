@@ -1,0 +1,13 @@
+---
+- name: Get and Display IOS facts
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+    - name: Gather facts (ios)
+      cisco.ios.ios_facts:
+      when: ansible_network_os == 'cisco.ios.ios'
+
+    - name: Print facts (ios)
+      ansible.builtin.debug:
+        var: hostvars
