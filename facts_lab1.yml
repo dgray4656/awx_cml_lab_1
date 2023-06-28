@@ -12,7 +12,3 @@
         password: C1sco12345
         lab: Lab1
       register: result
-
-    - name: Print Facts Learned
-        ansible.builtin.debug:
-          var: result
