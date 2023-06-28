@@ -1,6 +1,7 @@
 ---
-- name: cisco.ios
-  source: https://galaxy.ansible.com
+collections:
+  - name: cisco.ios
+    source: https://galaxy.ansible.com
 
-- name: cisco.cml
-  source: https://galaxy.ansible.com
+  - name: cisco.cml
+    source: https://galaxy.ansible.com
