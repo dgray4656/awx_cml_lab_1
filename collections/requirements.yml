@@ -1,1 +1,6 @@
-'cisco.ios.ios_facts'
+---
+- name: cisco.ios
+  source: https://galaxy.ansible.com
+
+- name: cisco.cml
+  source: https://galaxy.ansible.com
