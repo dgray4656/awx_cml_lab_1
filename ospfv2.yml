@@ -1,0 +1,27 @@
+---
+- name: "CONFIGURE OSPFv2 ON E10 ROUTERS"
+  hosts: E10
+  gather_facts: no 
+
+  tasks:
+    - name: Apply ospfv2 configuration to {{ inventory_hostname }}
+      cisco.ios.ios_ospfv2:
+        config:
+          processes:
+            - process_id: "{{ ospfv2_process_id }}"
+              router_id: "{{ ospfv2_router_id }}"
+              auto_cost:
+                reference_bandwidth: "{{ ospf2_autocost_refbandwidth }}"
+              passive_interfaces:
+                default: true
+                interface:
+                  set_interface: false
+                  name: "{{ ospfv2_non_passive_ints }}"
+              network: "{{ ospfv2_networks }}"
+        state: replaced
+      register: result
+      #register: proposed_commands
+    - name: Display result of playbook on {{ inventory_hostname }}
+      ansible.builtin.debug:
+        var: result
+        

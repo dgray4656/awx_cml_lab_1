@@ -1,0 +1,51 @@
+---
+- name: "Testing Native Parser"
+  hosts: all
+  gather_facts: no 
+
+  tasks:
+    - name: "Run show interface command and parse with native"
+      ansible.utils.cli_parse:
+        command: show interface
+        parser:
+          name: ansible.netcommon.native
+        set_fact: my_interfaces
+    - name: "Run show inventory command and parse with native"
+      ansible.utils.cli_parse:
+        command: show inventory
+        parser:
+          name: ansible.netcommon.native
+        set_fact: my_inventory
+    - name: "Run show ip route connected command and parse with native"
+      ansible.utils.cli_parse:
+        command: show ip route connected
+        parser:
+          name: ansible.netcommon.native
+        set_fact: routes_connected
+    - name: "Run show ip route ospf command and parse with native"
+      ansible.utils.cli_parse:
+        command: show ip route ospf
+        parser:
+          name: ansible.netcommon.native
+        set_fact: routes_ospf
+    - name: "Run show ip ospf neighbor and parse with native"
+      ansible.utils.cli_parse:
+        command: show ip ospf neighbor
+        parser: 
+          name: ansible.netcommon.native
+        set_fact: my_ospf_neighbors 
+    - name: "Print interfaces"
+      ansible.builtin.debug:
+        var: ansible_facts.my_interfaces
+    - name: "Print Inventory"
+      ansible.builtin.debug:
+        var: ansible_facts.my_inventory
+    - name: "Print connected routes"
+      ansible.builtin.debug:
+        var: ansible_facts.routes_connected
+    - name: "Print ospf routes"
+      ansible.builtin.debug:
+        var: ansible_facts.routes_ospf
+    - name: "Print OSPF Neighbors"
+      ansible.builtin.debug:
+        var: ansible_facts.my_ospf_neighbors

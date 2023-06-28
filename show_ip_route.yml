@@ -1,0 +1,24 @@
+---
+- name: "Show IP Route Output"
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: "Get output from show ip route command" 
+      cisco.ios.ios_command:
+        commands: show ip route
+      register: results
+
+    - name: "Print output"
+      ansible.builtin.debug:
+        msg: "{{ results.stdout }}"
+        
+    - name: "copy to file stdout.txt"
+      ansible.builtin.copy:
+        content: "{{ results.stdout }}"
+        dest: ./stdout.txt
+
+    - name: "copy to file stdout_lines.txt"
+      ansible.builtin.copy:
+        content: "{{ results.stdout_lines }}"
+        dest: ./stdout_lines.txt
