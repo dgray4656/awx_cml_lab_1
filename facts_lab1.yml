@@ -1,7 +1,7 @@
 ---
 - name: Get CML Lab1 Facts
   hosts: localhost
-  connetion: local
+  connection: local
   gather_facts: no 
 
   tasks:
