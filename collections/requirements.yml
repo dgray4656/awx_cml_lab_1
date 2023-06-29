@@ -5,7 +5,4 @@ collections:
 
   - name: cisco.cml
     source: https://galaxy.ansible.com
-
-  - name: ansible.builtin
-  - name: ansible.netcommon
   
