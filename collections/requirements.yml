@@ -5,4 +5,5 @@ collections:
 
   - name: cisco.cml
     source: https://galaxy.ansible.com
-  
+
+  - name: ansible.utils
