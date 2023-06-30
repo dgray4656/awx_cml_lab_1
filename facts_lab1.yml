@@ -10,5 +10,5 @@
         host: 10.10.20.161
         user: developer
         password: C1sco12345
-        lab: Lab1
+        lab: Multi Platform Network
       register: result
