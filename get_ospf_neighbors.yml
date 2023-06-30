@@ -1,0 +1,13 @@
+---
+- name: "Gather OSPF neighbors"
+  hosts: E10
+  gather_facts: no 
+
+  tasks:
+
+    - name: Run show ip ospf neighbor and parse results
+      ansible.utils.cli_parse:
+        command: show ip ospf neighbor
+        parser:
+          name: ansible.netcommon.native
+        set_fact: my_ospf_neighbors
