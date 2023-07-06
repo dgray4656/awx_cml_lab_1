@@ -6,7 +6,7 @@
 
   tasks:
     - name: remove default lab
-      cisco.cml.cml_lab_facts:
+      cisco.cml.cml_lab:
         host: 10.10.20.161
         user: developer
         password: C1sco12345
@@ -15,7 +15,7 @@
 
 
     - name: build clean Lab1 
-      cisco.cml.cml_lab_facts:
+      cisco.cml.cml_lab:
         host: 10.10.20.161
         user: developer
         password: C1sco12345
