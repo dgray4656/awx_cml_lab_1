@@ -9,6 +9,7 @@
         diff_against: startup
         #diff_ignore_lines:
         #  - ntp clock .*
+      diff: true
 
     - name: write config to nvram if modified
       cisco.ios.ios_config:
@@ -19,3 +20,4 @@
         diff_against: startup
         #diff_ignore_lines:
         #  - ntp clock .*
+      diff: true
