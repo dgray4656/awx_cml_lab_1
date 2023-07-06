@@ -1,0 +1,24 @@
+---
+- name: Prepare CML environment for Lab1
+  hosts: localhost
+  connection: local
+  gather_facts: no 
+
+  tasks:
+    - name: remove default lab
+      cisco.cml.cml_lab_facts:
+        host: 10.10.20.161
+        user: developer
+        password: C1sco12345
+        lab: "Small NXOS/IOSXE Network"
+        state: absent
+
+
+    - name: build clean Lab1 
+      cisco.cml.cml_lab_facts:
+        host: 10.10.20.161
+        user: developer
+        password: C1sco12345
+        lab: Lab1
+        state: started
+        file: resources/Lab1.yaml
