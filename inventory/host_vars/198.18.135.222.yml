@@ -1,0 +1,81 @@
+hostname: R2
+mgmt_intf_name: &Mgmt_intf_name GigabitEthernet0/0
+mgmt_intf_ipv4addr: &Mgmt_ipv4_addr 198.18.135.222 
+mgmt_intf_ipv4mask: &Mgmt_ipv4_mask 255.255.192.0
+mgmt_intf_ipv4cidr: &Mgmt_ipv4_cidr 198.18.135.222/18
+mgmt_intf_next_hop: 198.18.128.1
+ospfv2_router_id: 10.255.254.2
+ospfv2_non_passive_ints:
+  - GigabitEthernet0/1
+  - GigabitEthernet0/4
+ospfv2_networks:
+  - address: 10.0.0.0
+    wildcard_bits: 0.255.255.255
+    area: '0'
+  - address: 102.255.255.248
+    wildcard_bits: 0.0.0.3
+    area: '0'
+interfaces:
+  - name: *Mgmt_intf_name
+    speed: 1000
+    duplex: full
+    description: Management Interface 
+    enabled: true
+    l3_info:
+      ipv4address: *Mgmt_ipv4_cidr
+  - name: GigabitEthernet0/1
+    speed: 1000
+    duplex: full
+    description: R1 G0/2
+    enabled: true
+    l3_info:
+      ipv4address: 10.255.255.242/30
+    ospf_info: 
+      network_type: point_to_point
+  - name: GigabitEthernet0/2
+    speed: 1000
+    duplex: full
+    description: UPLINK TO ISP2
+    enabled: true
+    l3_info:
+      ipv4address: 102.255.255.250/30
+  - name: GigabitEthernet0/4
+    speed: 1000
+    duplex: full
+    description: R4 G0/2
+    enabled: true
+    l3_info:
+      ipv4address: 10.255.255.249/30
+    ospf_info: 
+      network_type: point_to_point
+  - name: Loopback0
+    description: Loopback used for Router ID
+    l3_info:
+      ipv4address: 10.255.254.2/32
+    ospf_info: 
+      network_type: point_to_point
+  - name: Loopback1
+    description: User Subnet 1
+    l3_info:
+      ipv4address: 10.32.0.1/13
+    ospf_info: 
+      network_type: point_to_point
+  - name: Loopback2
+    description: User Subnet 2
+    l3_info:
+      ipv4address: 10.40.0.1/13
+    ospf_info: 
+      network_type: point_to_point
+  - name: Loopback3
+    description: User Subnet 3
+    l3_info:
+      ipv4address: 10.48.0.1/13
+    ospf_info: 
+      network_type: point_to_point
+  - name: Loopback4
+    description: User Subnet 4
+    l3_info:
+      ipv4address: 10.56.0.1/13
+    ospf_info: 
+      network_type: point_to_point
+  

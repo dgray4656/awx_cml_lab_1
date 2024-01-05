@@ -1,0 +1,57 @@
+all:
+  vars:
+    ansible_user: cisco
+    ansible_password: cisco
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: cisco.ios.ios
+  children:
+    isps:
+      children:
+        isp1:
+          vars:
+            bgp_as: 1
+          hosts:
+            198.18.135.211:
+              vars:
+                ansible_host: ISP1
+        isp2:
+          vars:
+            bgp_as: 2
+          hosts:
+            198.18.135.212:
+              vars: 
+                ansible_host: ISP2
+        isp3: 
+          vars:
+            bgp_as: 3
+          hosts:
+            198.18.135.213:
+              vars:
+                ansible_host: ISP3
+        isp4:
+          vars:
+            bgp_as: 4
+          hosts:
+            198.18.135.214:
+              vars:
+                ansible_host: ISP4
+    enterprise:
+      children:
+        E10: 
+          vars:
+            bgp_as: 10
+          hosts:
+            198.18.135.221:
+              vars: 
+                ansible_host: R1
+            198.18.135.222:
+              vars:
+                ansible_host: R2
+            198.18.135.223:
+              vars:
+                ansible_host: R3
+            198.18.135.224:
+              vars:
+                ansible_host: R4
+
+
